@@ -1,31 +1,32 @@
+import java.util.HashMap;
+
 public class Substring {
 	public static void main(String[] args) {
 		String part = "hello";
-		String full = "world2";
-
+		String full = "wd";
 
 		System.out.println(twoStrings(part, full));
 	}
 
-	static String[] partBreakdown(String part) {
-		String[] parts = new String[part.length()]; 
+	static HashMap<Character, Boolean> partBreakdown(String part) {
+		HashMap<Character, Boolean> letters = new HashMap<Character, Boolean>();
 
 		for (int i = 0; i < part.length(); i++) {
-			parts[i] = part.substring(0, i+1);
+			letters.put(part.charAt(i), true);
 		}
 
-		return parts;
+		return letters;
 	}
 
 	static String twoStrings(String s1, String s2) {
-		String[] parts = partBreakdown(s1);
+		HashMap<Character, Boolean> letters = partBreakdown(s1);
 
-		for (String subPart : parts) {
-			System.out.println("does " + s2 + " contain " + subPart);
-			if (s2.contains(subPart))
-				return "Yes";
+		for (int i = 0; i < s2.length(); i++) {
+			if (letters.containsKey(s2.charAt(i))) {
+				return "YES";
+			}
 		}
 
-		return "No";
+		return "NO";
 	}
 }
