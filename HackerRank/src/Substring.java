@@ -1,9 +1,7 @@
-import java.util.ArrayList;
-
 public class Substring {
 	public static void main(String[] args) {
 		String part = "hello";
-		String full = "world";
+		String full = "world2";
 
 
 		System.out.println(twoStrings(part, full));
